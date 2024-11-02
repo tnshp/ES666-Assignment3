@@ -1,10 +1,9 @@
 import pdb
 import src
 import glob
-import importlib
+import importlib.util
 import os
 import cv2
-
 
 
 ### Change path to images here
@@ -24,7 +23,7 @@ for idx,algo in enumerate(all_submissions):
         PanaromaStitcher = getattr(module, 'PanaromaStitcher')
         inst = PanaromaStitcher()
 
-        ###
+        ### 
         for impaths in glob.glob(path):
             print('\t\t Processing... {}'.format(impaths))
             stitched_image, homography_matrix_list = inst.make_panaroma_for_images_in(path=impaths)
